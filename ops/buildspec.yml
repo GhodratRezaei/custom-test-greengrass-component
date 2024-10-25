@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.12  # Adjust based on your component's runtime needs
+  build:
+    commands:
+      - echo "Building Greengrass component"
+      - zip -r component.zip src/component_code  # Example: packaging source files
+  post_build:
+    commands: 
+      - echo "Saving artifact to S3"
+      - aws s3 cp component.zip s3://my-greengrass-artifacts-bucket/component.zip
+artifacts:
+  files:
+    - component.zip
