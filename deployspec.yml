@@ -1,20 +1,30 @@
 version: 0.2
+env:
+  variables:
+    coredevice: "ggcoredevice"  # Replace with your actual Greengrass device name
 phases:
   install:
     runtime-versions:
-      python: 3.12  # Adjust as needed
+      python: 3.8  # Adjust based on the runtime you need
+    commands:
+      - echo "Starting installation phase"
+      - pip install --upgrade awscli  # Ensures latest AWS CLI version for greengrassv2 commands
   pre_build:
     commands:
       - echo "Setting up deployment environment"
-      - export coredevice="ggcoredevice"  # Define your device name here
+      - echo "Deploying to Greengrass device: $coredevice"
   build:
     commands:
-      # - echo "Deploying to Greengrass device: $coredevice"
+      - echo "Starting the deployment to Greengrass device $coredevice"
       - aws greengrassv2 create-deployment \
           --target-arn arn:aws:iot:eu-central-1:288465336862:thing/${coredevice} \
-          --components 'MyComponent'='1.0.0' \
+          --components MyComponent=1.0.0 \
           --deployment-policies failureHandlingPolicy=DO_NOTHING \
           --region eu-central-1
-
-
-
+  post_build:
+    commands:
+      - echo "Deployment command completed"
+artifacts:
+  files:
+    - '**/*'  # Include if you want any files produced to be part of the build artifacts
+  discard-paths: yes
