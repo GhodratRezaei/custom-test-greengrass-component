@@ -10,12 +10,7 @@ phases:
   post_build:
     commands: 
       - echo "Saving artifact to S3"
-      - aws s3 cp component.zip s3://my-greengrass-artifacts-bucket/component.zip
+      - aws s3 cp component.zip s3://gg-component-test-bucket/component.zip
 artifacts:
   files:
-    - component.zip
-
-
-
-
-   
+    - component.zip 
