@@ -10,10 +10,12 @@ phases:
   post_build:
     commands: 
       - echo "Saving artifact to S3 located in eu-central-1 region"
-      - aws s3 cp component.zip s3://my-greengrass-artifacts-bucket/component.zip --region eu-central-1
+      - aws s3 cp component.zip s3://my-greengrass-artifacts-bucket/component.zip 
 artifacts:
   files:
     - component.zip
+    
+    
 
 
 
