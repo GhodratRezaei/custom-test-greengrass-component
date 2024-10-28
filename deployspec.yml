@@ -12,7 +12,7 @@ phases:
   pre_build:
     commands:
       - echo "Setting up deployment environment"
-      - echo "Deploying to Greengrass device: $coredevice"
+      # - echo "Deploying to Greengrass device: $coredevice"
   build:
     commands:
       - echo "Starting the deployment to Greengrass device $coredevice"
