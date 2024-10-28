@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+  pre_build:
+    commands:
+      - echo "Preparing deployment to Greengrass"
+      - export GG_DEVICE_ID=ggcoredevice
+  build:
+    commands:
+      - echo "Deploying to Greengrass"
+      - aws greengrassv2 create-deployment --target-arn arn:aws:iot:eu-central-1:288465336862:thing/${ggcoredevice} --components 'MyComponent'='1.0.0' --deployment-policies failureHandlingPolicy=DO_NOTHING
+  post_build:
+    commands:
+      - echo "Deployment complete"
+
+
