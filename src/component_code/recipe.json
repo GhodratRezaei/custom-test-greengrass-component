@@ -12,10 +12,10 @@
         },
         "Lifecycle": {
           "Install": {
-            "script": "pip install -r {artifacts:decompressedPath}/requirements.txt || echo 'No dependencies'"
+            "script": "pip install -r {artifacts:decompressedPath}/src/component_code/requirements.txt || echo 'No dependencies'"
           },
           "Run": {
-            "script": "python3 -u {artifacts:decompressedPath}/test.py"
+            "script": "python3 {artifacts:decompressedPath}/src/component_code/test.py"
           }
         },
         "Artifacts": [

@@ -43,6 +43,15 @@
           "merge": "{}"
         }
       },
+
+
+      "aws.greengrass.LogManager": {
+        "componentVersion": "2.3.8",
+        "configurationUpdate": {
+          "merge": "{\"logsUploaderConfiguration\":{\"systemLogsConfiguration\":{\"uploadToCloudWatch\":\"true\"}}}"
+        }
+      },
+
       
       "MyCustomPythonComponent": {
         "componentVersion": "1.0.0",
