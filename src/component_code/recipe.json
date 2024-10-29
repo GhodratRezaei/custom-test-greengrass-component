@@ -1,0 +1,28 @@
+{
+    "RecipeFormatVersion": "2024-10-29",
+    "ComponentName": "MyCustomPythonComponent",
+    "ComponentVersion": "1.0.0",
+    "ComponentDescription": "A custom Greengrass component to run a Python script",
+    "ComponentPublisher": "GhodratRezaei",
+    "ComponentConfiguration": {},
+    "Manifests": [
+      {
+        "Platform": {
+          "os": "linux"
+        },
+        "Lifecycle": {
+          "Install": {
+            "script": "pip install -r {artifacts:decompressedPath}/requirements.txt || echo 'No dependencies'"
+          },
+          "Run": {
+            "script": "python3 {artifacts:decompressedPath}/test.py"
+          }
+        },
+        "Artifacts": [
+          {
+            "URI": "s3://your-s3-bucket/MyCustomComponent/my_script.zip"
+          }
+        ]
+      }
+    ]
+  }
