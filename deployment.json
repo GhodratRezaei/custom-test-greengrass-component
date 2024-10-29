@@ -43,20 +43,13 @@
           "merge": "{}"
         }
       },
-      "component":{
+      
+      "MyCustomPythonComponent": {
         "componentVersion": "1.0.0",
         "configurationUpdate": {
           "merge": "{}"
         }
-      },
-
-      "MyCustomComponent": {
-        "componentVersion": "1.0.0",
-        "configurationUpdate": {
-            "merge": "{\"customParameter\":\"customValue\",\"setting\":\"true\"}"
-        }
-        }
-        
+      }
     },
 
 

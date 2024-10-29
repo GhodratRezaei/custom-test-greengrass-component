@@ -6,11 +6,11 @@ phases:
   build:
     commands:
       - echo "Building Greengrass component"
-      - zip -r component.zip src/component_code  # Example: packaging source files
+      - zip -r component.zip src/component_code/requirements.txt src/component_code/test.py  # Example: packaging source files
   post_build:
     commands: 
       - echo "Saving artifact to S3"
-      - aws s3 cp component.zip s3://gg-component-test-bucket/component.zip
+      - aws s3 cp component.zip s3://gg-component-test-bucket-2/component.zip
 artifacts:
   files:
     - component.zip 
