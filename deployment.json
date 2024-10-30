@@ -19,12 +19,9 @@
         }
       },
 
-      "aws.greengrass.clientdevices.mqtt.Moquette": {
-        "componentVersion": "2.3.7",
-        "configurationUpdate": {
-          "merge": "{\"moquette\":{\"host\":\"0.0.0.0\",\"netty.mqtt.message_size\":\"131072\",\"ssl_port\":\"8883\"},\"netty.channel.read.limit\":524288.0,\"netty.channel.write.limit\":524288.0,\"startupTimeoutSeconds\":\"120\"}"
-        }
-      },
+
+
+      
       "aws.greengrass.clientdevices.mqtt.Bridge": {
         "componentVersion": "2.3.2",
         "configurationUpdate": {
@@ -50,15 +47,10 @@
         "configurationUpdate": {
           "merge": "{\"logsUploaderConfiguration\":{\"systemLogsConfiguration\":{\"uploadToCloudWatch\":\"true\"}}}"
         }
-      },
+      }
 
       
-      "MyCustomPythonComponent": {
-        "componentVersion": "1.0.0",
-        "configurationUpdate": {
-          "merge": "{}"
-        }
-      }
+
     },
 
 

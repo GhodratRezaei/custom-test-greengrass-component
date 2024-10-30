@@ -1,0 +1,130 @@
+aws greengrassv2 create-deployment --target-arn arn:aws:iot:eu-central-1:288465336862:thing/${ggcoredevice} --components 'MyComponent'='1.0.0' --deployment-policies failureHandlingPolicy=DO_NOTHING --region eu-central-1
+
+
+aws greengrassv2 create-deployment --target-arn arn:aws:iot:eu-central-1:288465336862:thing/${ggcoredevice} --components '{"MyComponent": {"componentVersion": "1.0.0"}} --deployment-policies failureHandlingPolicy=DO_NOTHING --region eu-central-1
+
+aws greengrassv2 list-deployments --target-arn arn:aws:iot:eu-central-1:288465336862:thing/ggcoredevice
+
+aws greengrassv2 get-deployment --deployment-id 6018c84e-4465-453d-a552-55b365bf5978
+
+#####################################################################
+
+
+Component Name: aws.greengrass.Nucleus
+    Version: 2.13.0
+    State: FINISHED
+    Configuration: {"awsRegion":"eu-central-1","componentStoreMaxSizeBytes":"10000000000","deploymentPollingFrequencySeconds":"15","envStage":"prod","fipsMode":"false","fleetStatus":{"periodicStatusPublishIntervalSeconds":86400.0},"greengrassDataPlaneEndpoint":"","greengrassDataPlanePort":"8443","httpClient":{},"iotCredEndpoint":"c3o6yud3xu0pmg.credentials.iot.eu-central-1.amazonaws.com","iotDataEndpoint":"afjw6cxweat9e-ats.iot.eu-central-1.amazonaws.com","iotRoleAlias":"GreengrassV2TokenExchangeRoleAlias","jvmOptions":"-Dlog.store=FILE","logging":{},"mqtt":{"spooler":{}},"networkProxy":{"proxy":{}},"platformOverride":{},"runWithDefault":{"posixShell":"sh","posixUser":"ggc_user:ggc_group"},"s3EndpointType":"GLOBAL","telemetry":{}}
+
+
+Component Name: aws.greengrass.clientdevices.Auth
+    Version: 2.5.1
+    State: RUNNING
+    Configuration: {"ca_type":null,"certificateAuthority":{"caType":null},"deviceGroups":{"definitions":{"MyDeviceGroup":{"policyName":"MyRestrictivePolicy","selectionRule":"thingName: device*"}},"formatVersion":"2021-03-05","policies":{"MyRestrictivePolicy":{"AllowConnect":{"operations":["mqtt:connect"],"resources":["*"],"statementDescription":"Allow client devices to connect."},"AllowPublish":{"operations":["mqtt:publish"],"resources":["mqtt:topic:test/topic"],"statementDescription":"Allow client devices to publish on test/topic."},"AllowSubscribe":{"operations":["mqtt:subscribe"],"resources":["mqtt:topicfilter:test/topic/response"],"statementDescription":"Allow client devices to subscribe to 
+
+
+Component Name: aws.greengrass.clientdevices.mqtt.Moquette
+    Version: 2.3.7
+    State: RUNNING
+    Configuration: {"moquette":{"host":"0.0.0.0","netty.mqtt.message_size":"131072","ssl_port":"8883"},"netty.channel.read.limit":524288.0,"netty.channel.write.limit":524288.0,"startupTimeoutSeconds":"120"}
+
+
+Component Name: aws.greengrass.clientdevices.mqtt.Bridge
+    Version: 2.3.2
+    State: RUNNING
+    Configuration: {"mqtt5RouteOptions":{},"mqttTopicMapping":{"HelloWorldIotCoreMapping":{"source":"LocalMqtt","target":"IotCore","topic":"myTopic"}},"startupTimeoutSeconds":"120"}test/topic/response."}}}},"metrics":{},"security":{},"startupTimeoutSeconds":"120"}
+
+
+Component Name: aws.greengrass.Cli
+    Version: 2.13.0
+    State: RUNNING
+    Configuration: {"AuthorizedPosixGroups":null,"AuthorizedWindowsGroups":null}
+
+
+Component Name: aws.greengrass.clientdevices.IPDetector
+    Version: 2.2.0
+    State: RUNNING
+    Configuration: {}
+##########################################################################################################################################################3
+
+
+{
+  "RecipeFormatVersion": "2020-01-25",
+  "ComponentName": "MyCustomPythonComponent",
+  "ComponentVersion": "1.0.0",
+  "ComponentDescription": "A custom Greengrass component to run a Python script",
+  "ComponentPublisher": "YourName",
+  "ComponentConfiguration": {},
+  "Manifests": [
+    {
+      "Platform": {
+        "os": "linux"
+      },
+      "Lifecycle": {
+        "Install": {
+          "script": "pip install -r {artifacts:decompressedPath}/requirements.txt || echo 'No dependencies'"
+        },
+        "Run": {
+          "script": "python3 {artifacts:decompressedPath}/my_script.py"
+        }
+      },
+      "Artifacts": [
+        {
+          "URI": "s3://your-s3-bucket/MyCustomComponent/my_script.zip"
+        }
+      ]
+    }
+  ]
+}
+
+
+
+eu-central-1:288465336862
+arn:aws:s3:eu-north-1:288465336862:gg-component-test-bucket/*
+
+
+arn:aws:s3:::gg-component-test-bucket
+
+arn:aws:iot:eu-central-1:288465336862:thing/${coredevice}
+
+
+
+
+
+aws greengrassv2 create-deployment --cli-input-json file://deployment.json
+
+
+
+{
+  "logsUploaderConfiguration": {
+    "systemLogsConfiguration": {
+      "uploadToCloudWatch": "true"
+    }
+  }
+}
+
+
+
+Component Name: aws.greengrass.LogManager
+    Version: 2.3.8
+    State: RUNNING
+    Configuration: {
+  "logsUploaderConfiguration": {
+    "systemLogsConfiguration": {
+      "uploadToCloudWatch": "true"
+    }
+  }
+}
+
+
+
+      "aws.greengrass.LogManager": {
+        "componentVersion": "2.3.8",
+        "configurationUpdate": {
+          "merge": "{\"logsUploaderConfiguration\":{\"systemLogsConfiguration\":{\"uploadToCloudWatch\":\"true\"}}}"
+        }
+      },
+
+
+
+
+

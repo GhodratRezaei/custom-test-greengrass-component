@@ -16,7 +16,8 @@ phases:
   build:
     commands:
       - echo "Starting the deployment to Greengrass device $coredevice"
-      - aws greengrassv2 create-deployment --target-arn arn:aws:iot:eu-central-1:288465336862:thing/${coredevice} --components MyComponent=1.0.0 --deployment-policies failureHandlingPolicy=DO_NOTHING --region eu-central-1
+      # - aws greengrassv2 create-deployment --target-arn arn:aws:iot:eu-central-1:288465336862:thing/${coredevice} --components MyComponent=1.0.0 --deployment-policies failureHandlingPolicy=DO_NOTHING --region eu-central-1
+      - aws greengrassv2 create-deployment --cli-input-json file://deployment.json
   post_build:
     commands:
       - echo "Deployment command completed"
